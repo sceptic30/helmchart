@@ -4,7 +4,7 @@ deploymentStrategy:
 
 image:
   repository: netdata/netdata
-  tag: "{{ .Chart.AppVersion }}"
+  tag: "latest"
   pullPolicy: Always
 
 sd:
@@ -71,12 +71,6 @@ serviceAccount:
 
 parent:
   resources: {}
-    # limits:
-    #  cpu: 4
-    #  memory: 4096Mi
-    # requests:
-    #  cpu: 4
-    #  memory: 4096Mi
 
   livenessProbe:
     failureThreshold: 3
@@ -125,7 +119,7 @@ parent:
       path: /etc/netdata/netdata.conf
       data: |
         [global]
-          memory mode = save
+          memory mode = dbengine
 
         [plugins]
           cgroups = no
@@ -181,10 +175,10 @@ parent:
           to: sysadmin
 
   claiming:
-    enabled: false
-    token: ""
-    rooms: ""
-    url: "https://app.netdata.cloud"
+    enabled: true
+    token: "gASdl1kLaQ47f764je__nNqSNRrKLGMC0Z5wxDxPqOdQJI-tQyIDhItO4poc_z-2jyRByyp9SnZGtnKCnzXOnqu81JHHrZdUpZPJ8wsyfZh5q9Wk7VlkluOGSI-wuWvS31R5frk"
+    rooms: "08e4bee5-5725-4bd2-aa84-9b418be82b10"
+    url: "https://staging.netdata.cloud"
 
 child:
   enabled: true
@@ -233,7 +227,7 @@ child:
 
   podAnnotations: {}
 
-  persistUniqueID: true
+  persistUniqueID: false
 
   configs:
     netdata:
@@ -241,7 +235,7 @@ child:
       path: /etc/netdata/netdata.conf
       data: |
         [global]
-          memory mode = none
+          memory mode = save
         [health]
           enabled = no
     stream:
@@ -291,7 +285,7 @@ child:
     # DO_NOT_TRACK: 1
 
   claiming:
-    enabled: false
-    token: ""
-    rooms: ""
-    url: "https://app.netdata.cloud"
+    enabled: true
+    token: "gASdl1kLaQ47f764je__nNqSNRrKLGMC0Z5wxDxPqOdQJI-tQyIDhItO4poc_z-2jyRByyp9SnZGtnKCnzXOnqu81JHHrZdUpZPJ8wsyfZh5q9Wk7VlkluOGSI-wuWvS31R5frk"
+    rooms: "08e4bee5-5725-4bd2-aa84-9b418be82b10"
+    url: "https://staging.netdata.cloud"
