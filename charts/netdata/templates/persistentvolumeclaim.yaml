@@ -11,7 +11,7 @@ metadata:
     heritage: {{ .Release.Service }}
     role: parent
 spec:
-  accessModes: [ "ReadWriteOnce" ]
+  accessModes: ["{{ .Values.parent.database.accessmodes }}"]
   {{- if (ne "-" .Values.parent.database.storageclass) }}
   storageClassName: "{{ .Values.parent.database.storageclass }}"
   {{- end }}
@@ -33,7 +33,7 @@ metadata:
     heritage: {{ .Release.Service }}
     role: parent
 spec:
-  accessModes: [ "ReadWriteOnce" ]
+  accessModes: ["{{ .Values.parent.database.accessmodes }}"]
   {{- if (ne "-" .Values.parent.alarms.storageclass) }}
   storageClassName: "{{ .Values.parent.alarms.storageclass }}"
   {{- end }}
