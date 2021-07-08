@@ -27,19 +27,19 @@ spec:
     - host: {{ . }}
       http:
         paths:
-          - path: {{ $ingressPath }}
-            {{- if not (eq $apiVersion "extensions/v1beta1" "networking.k8s.io/v1beta1") }}
-            pathType: Prefix
+          {{- if not (eq $apiVersion "extensions/v1beta1" "networking.k8s.io/v1beta1") }}
+        - pathType: Prefix
+          {{- end }}
+          path: "{{ $ingressPath }}"
+          backend:
+            {{- if eq $apiVersion "extensions/v1beta1" "networking.k8s.io/v1beta1" }}
+            serviceName: {{ $fullName }}
+            servicePort: http
+            {{- else }}
+            service:
+              name: {{ $fullName }}
+              port:
+                Name: http
             {{- end }}
-            backend:
-              {{- if eq $apiVersion "extensions/v1beta1" "networking.k8s.io/v1beta1" }}
-              serviceName: {{ $fullName }}
-              servicePort: http
-              {{- else }}
-              service:
-                name: {{ $fullName }}
-                port:
-                  name: http
-              {{- end }}
   {{- end }}
 {{- end }}
