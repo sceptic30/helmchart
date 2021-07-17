@@ -191,7 +191,7 @@ parent:
           to: sysadmin
 
   claiming:
-    enabled: false
+    enabled: true
     token: ""
     rooms: ""
     url: "https://app.netdata.cloud"
@@ -303,7 +303,7 @@ child:
     # DO_NOT_TRACK: 1
 
   claiming:
-    enabled: false
+    enabled: true
     token: ""
     rooms: ""
     url: "https://app.netdata.cloud"
