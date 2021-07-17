@@ -11,6 +11,10 @@ metadata:
     chart: {{ template "netdata.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    app.kubernetes.io/managed-by": "Helm"
+  annotations:
+    meta.helm.sh/release-name": "netdata"
+    meta.helm.sh/release-namespace": "{{ .Release.Namespace }}"
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']

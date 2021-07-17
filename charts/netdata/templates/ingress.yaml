@@ -6,7 +6,7 @@
 apiVersion: {{ $apiVersion }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-rooter
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "netdata.name" . }}
@@ -39,7 +39,7 @@ spec:
             service:
               name: {{ $fullName }}
               port:
-                Name: http
+                number: 19999
             {{- end }}
   {{- end }}
 {{- end }}

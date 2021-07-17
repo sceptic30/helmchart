@@ -9,7 +9,10 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     role: parent
+    app.kubernetes.io/managed-by": "Helm"
   annotations:
+    meta.helm.sh/release-name": "netdata"
+    meta.helm.sh/release-namespace": "{{ .Release.Namespace }}"
 {{- with .Values.service.annotations }}
 {{ toYaml . | trim | indent 4 }}
 {{- end }}

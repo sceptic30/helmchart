@@ -57,8 +57,14 @@ service:
 ingress:
   enabled: true
   annotations:
-    kubernetes.io/ingress.class: haproxy
+    kubernetes.io/ingress.class: "haproxy"
+    ingress.kubernetes.io/auth-type: "basic"
+    ingress.kubernetes.io/auth-secret: "netdata-basic-auth"
+    ingress.kubernetes.io/auth-realm: "Authentication Required"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    app.kubernetes.io/managed-by: "Helm"
+    meta.helm.sh/release-name: "netdata"
+    meta.helm.sh/release-namespace: "netdata"
   path: /
   hosts:
     - netdata.k8s.local
@@ -191,7 +197,7 @@ parent:
           to: sysadmin
 
   claiming:
-    enabled: false
+    enabled: true
     token: ""
     rooms: ""
     url: "https://app.netdata.cloud"
@@ -303,7 +309,7 @@ child:
     # DO_NOT_TRACK: 1
 
   claiming:
-    enabled: false
+    enabled: true
     token: ""
     rooms: ""
     url: "https://app.netdata.cloud"

@@ -8,6 +8,10 @@ metadata:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app.kubernetes.io/managed-by": "Helm"
+  annotations:
+    meta.helm.sh/release-name": "netdata"
+    meta.helm.sh/release-namespace": "{{ .Release.Namespace }}"
 spec:
   allowPrivilegeEscalation: true
   allowedCapabilities:

@@ -10,6 +10,10 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     role: child
+    app.kubernetes.io/managed-by": "Helm"
+  annotations:
+    meta.helm.sh/release-name": "netdata"
+    meta.helm.sh/release-namespace": "{{ .Release.Namespace }}"
 spec:
   {{- with .Values.child.updateStrategy }}
   updateStrategy: {{- toYaml . | nindent 4 }}
