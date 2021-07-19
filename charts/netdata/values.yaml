@@ -58,9 +58,9 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: "haproxy"
-    ingress.kubernetes.io/auth-type: "basic"
-    ingress.kubernetes.io/auth-secret: "netdata-basic-auth"
-    ingress.kubernetes.io/auth-realm: "Authentication Required"
+    #ingress.kubernetes.io/auth-type: "basic"
+    #ingress.kubernetes.io/auth-secret: "netdata-basic-auth"
+    #ingress.kubernetes.io/auth-realm: "Authentication Required"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     app.kubernetes.io/managed-by: "Helm"
     meta.helm.sh/release-name: "netdata"
