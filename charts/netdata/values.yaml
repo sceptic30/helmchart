@@ -67,11 +67,11 @@ ingress:
     meta.helm.sh/release-namespace: "netdata"
   path: /
   hosts:
-    - netdata.k8s.local
+    - netdata.example.com
   tls:
     - secretName: netdata-tls-secret
       hosts:
-        - netdata.k8s.local
+        - netdata.example.com
 
 rbac:
   create: true
